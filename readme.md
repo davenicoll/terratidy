@@ -45,7 +45,7 @@ You can also use `terratidy` in your pre-commit config to enforce consistent sta
   repo: local
 ```
 
-The tool will analyze the specified directory and automatically apply fixes for any issues it identifies. If the process completes successfully, you will see the message "DirectoryAutoFix completed successfully." If an error occurs during the process, the tool will display an error message.
+The tool will analyze the specified directory and automatically apply fixes for any issues it identifies. If the process completes successfully, you'll see the message "Tidy completed successfully." If an error occurs during the process, `terratidy` will display an error message.
 
 Keep in mind that `terratidy` may not be able to resolve all issues automatically. Manual intervention may be required for some problems.
 
