@@ -49,23 +49,6 @@ The tool will analyze the specified directory and automatically apply fixes for 
 
 Keep in mind that `terratidy` may not be able to resolve all issues automatically. Manual intervention may be required for some problems.
 
-# Supported Providers
+# Provider Agnostic
 
-`terratidy` currently supports variable block description generation for the following providers:
-
-- Alicloud (`alicloud`)
-- AWS (`aws`)
-- AWS Cloud Control API (`awscc`)
-- AzAPI (`azapi`)
-- Azure Resource Manager (`azurerm`)
-- Azure Active Directory (`azuread`)
-- Google Cloud Platform (`google`)
-- Helm (`helm`)
-- Kubernetes (`kubernetes`)
-- Local (`local`)
-- Modtm (`modtm`)
-- Null (`null`)
-- Random (`random`)
-- Template (`template`)
-- Time (`time`)
-- Tls (`tls`)
+`terratidy` is provider-agnostic, seamlessly supporting AWS, Azure, Google Cloud Platform, and more.
