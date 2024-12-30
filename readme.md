@@ -6,14 +6,14 @@ While many issues can be resolved automatically, some may require manual adjustm
 
 terratidy can fix the following issues:
 
-* [Orders Within resource and data Blocks](https://github.com/Azure/terraform-azure-modules/blob/main/codex/logic_code/resource.md#orders-within-resource-and-data-blocks)
-* [Order to define variable](https://github.com/Azure/terraform-azure-modules/blob/main/codex/logic_code/variables.tf.md#order-to-define-variable)
-* [Do not declare `nullable = true` for `variable`](https://github.com/Azure/terraform-azure-modules/blob/main/codex/logic_code/variables.tf.md#do-not-declare-nullable--true)
-* Do not declare `sensitive = false` for `variable`
-* [`output` should be arranged alphabetically](https://github.com/Azure/terraform-azure-modules/blob/main/codex/logic_code/outputs.md#output-should-be-arranged-alphabetically)
-* Do not declare `sensitive = false` for `output`
-* [`local` should be arranged alphabetically](https://github.com/Azure/terraform-azure-modules/blob/main/codex/logic_code/locals.tf.md#local-should-be-arranged-alphabetically)
-* Orders in `moved` block. (`from` then `to`)
+- [Orders Within resource and data Blocks](https://github.com/Azure/terraform-azure-modules/blob/main/codex/logic_code/resource.md#orders-within-resource-and-data-blocks)
+- [Order to define variable](https://github.com/Azure/terraform-azure-modules/blob/main/codex/logic_code/variables.tf.md#order-to-define-variable)
+- [Do not declare `nullable = true` for `variable`](https://github.com/Azure/terraform-azure-modules/blob/main/codex/logic_code/variables.tf.md#do-not-declare-nullable--true)
+- Do not declare `sensitive = false` for `variable`
+- [`output` should be arranged alphabetically](https://github.com/Azure/terraform-azure-modules/blob/main/codex/logic_code/outputs.md#output-should-be-arranged-alphabetically)
+- Do not declare `sensitive = false` for `output`
+- [`local` should be arranged alphabetically](https://github.com/Azure/terraform-azure-modules/blob/main/codex/logic_code/locals.tf.md#local-should-be-arranged-alphabetically)
+- Orders in `moved` block. (`from` then `to`)
 
 ## Installation
 
@@ -31,6 +31,20 @@ terratidy -folder /path/to/your/terraform/module
 
 Replace `/path/to/your/terraform/module` with the path to the directory containing your Terraform module.
 
+## Pre-commit hook
+
+You can also use `terratidy` in your pre-commit config to enforce consistent standards in your repositories.
+
+```yaml
+- hooks:
+    - id: terratidy
+      name: terratidy
+      entry: /usr/bin/env bash -c 'for dir in $(git diff --cached --name-only --diff-filter=ACM | grep ".tf$" | xargs -n1 dirname | sort -u); do terratidy --folder "$dir"; done'
+      language: script
+      files: \.tf$
+  repo: local
+```
+
 The tool will analyze the specified directory and automatically apply fixes for any issues it identifies. If the process completes successfully, you will see the message "DirectoryAutoFix completed successfully." If an error occurs during the process, the tool will display an error message.
 
 Keep in mind that `terratidy` may not be able to resolve all issues automatically. Manual intervention may be required for some problems.
@@ -38,19 +52,20 @@ Keep in mind that `terratidy` may not be able to resolve all issues automaticall
 # Supported Providers
 
 `terratidy` currently supports variable block description generation for the following providers:
-* Alicloud (`alicloud`)
-* AWS (`aws`)
-* AWS Cloud Control API (`awscc`)
-* AzAPI (`azapi`)
-* Azure Resource Manager (`azurerm`)
-* Azure Active Directory (`azuread`)
-* Google Cloud Platform (`google`)
-* Helm (`helm`)
-* Kubernetes (`kubernetes`)
-* Local (`local`)
-* Modtm (`modtm`)
-* Null (`null`)
-* Random (`random`)
-* Template (`template`)
-* Time (`time`)
-* Tls (`tls`)
+
+- Alicloud (`alicloud`)
+- AWS (`aws`)
+- AWS Cloud Control API (`awscc`)
+- AzAPI (`azapi`)
+- Azure Resource Manager (`azurerm`)
+- Azure Active Directory (`azuread`)
+- Google Cloud Platform (`google`)
+- Helm (`helm`)
+- Kubernetes (`kubernetes`)
+- Local (`local`)
+- Modtm (`modtm`)
+- Null (`null`)
+- Random (`random`)
+- Template (`template`)
+- Time (`time`)
+- Tls (`tls`)

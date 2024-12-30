@@ -9,7 +9,7 @@ import (
 
 func main() {
 	var dirPath string
-	flag.StringVar(&dirPath, "folder", "", "The folder path to apply DirectoryAutoFix")
+	flag.StringVar(&dirPath, "folder", "", "The folder path to automatically tidy.")
 	flag.Parse()
 
 	if dirPath == "" {
@@ -19,9 +19,9 @@ func main() {
 
 	err := pkg.DirectoryAutoFix(dirPath)
 	if err != nil {
-		fmt.Println("Error during DirectoryAutoFix:", err)
+		fmt.Println("Error during tidy ("+ dirPath +")\n", err)
 		return
 	}
 
-	fmt.Println("DirectoryAutoFix completed successfully.")
+	fmt.Println("Tidy completed successfully:", dirPath)
 }
